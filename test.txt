@@ -1,0 +1,63 @@
+//check to make sure you are not in check anymore
+				if(player.inCheck==false){
+					//first time it checks and its not true, so their move made it to check if anything. 
+					player.inCheck = isCheck(end, otherPlayer, player);
+					//System.out.println("in check: " +player.inCheck);
+					
+				}
+				else{
+					//already in check now.
+					player.inCheck = isCheck(end, otherPlayer, player);
+					if(player.inCheck==true){ //move didnt make a difference
+						System.out.println("Error: your player was in check, make a move that would protect your king");
+						undo(startPiece, start,end, start.getX(), start.getY());
+						return false;
+					}
+					
+				}
+				//see if your move has placed the other player in check
+				otherPlayer.inCheck = isCheck(end, player, otherPlayer);
+				if(otherPlayer.inCheck){
+					System.out.println("check");
+				}
+				
+				
+				
+For checkmate: 
+
+public static boolean isCheckmate(Place end, Player player, Player otherPlayer){
+		//you would need to check for all the possible moves that can get them out of the check
+		//check if otherplayer is in check mate
+		
+		for(int i=0; i<otherplayer.getLiving().size(); i++){
+			//check if the other player can have different moves to the other parts of the board
+			for(int col=0; col<8;col++){
+				for(int row =0; row<8; row++){
+					//check every possible move on the board and then check if its in check, also make a temp board
+					if(totalData.pieceCheckMove(otherplayer.getLiving().get(i),... !=-1){
+						//move is valid at that spot
+						//check if its in going to be check or not
+						
+						if(helperCheck(..same parameters){
+						}
+					}
+				}
+			
+			}
+			if(player.getLiving().get(i).checkMove(otherPlayer.king.getX(), otherPlayer.king.getY()) ==2 ){
+				count ++;
+			}
+		}
+			if(count == player.getLiving().size()){
+				System.out.println("Checkmate");
+				if(player.getColor()==0){
+					//white
+					System.out.println("White wins");
+				}else{
+					System.out.println("Black wins");
+				}
+				System.exit(0);
+			}
+		
+		return false;
+	}
